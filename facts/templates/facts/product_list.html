@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Django Girls blog</title>
+</head>
+<body>
+<div>
+    <h1><a href="">Django Girls Blog</a></h1>
+</div>
+
+    {% for product in products %}
+    <div>
+        <p>Product: [ {{ product.name }} ]</p>
+        <p>{{ product.manufacturer }}</p>
+        <i>{{ product.barcode }}</i>
+    </div>
+    {% endfor %}
+
+</body>
+</html>
+</html>
