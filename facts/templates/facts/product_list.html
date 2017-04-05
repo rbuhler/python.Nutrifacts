@@ -3,15 +3,33 @@
     <title>Django Girls blog</title>
 </head>
 <body>
-<div>
-    <h1><a href="">Django Girls Blog</a></h1>
-</div>
+    <!-- Header -->
+    <div>
+        <h1><a href="">Django Girls Blog</a></h1>
+    </div>
 
+    <!-- Products [products] -->
     {% for product in products %}
     <div>
         <p>Product: [ {{ product.name }} ]</p>
         <p>{{ product.manufacturer }}</p>
         <i>{{ product.barcode }}</i>
+    </div>
+
+    <!-- Nutri Facts [facts] -->
+    <div>
+        <p>
+            facts.servingSize
+            servingUM
+            servingQuantity
+            servingQtdUm
+            footNote
+        </p>
+    </div>
+
+    <!-- Nutri Table [table] -->
+    <div>
+
     </div>
     {% endfor %}
 
