@@ -8,12 +8,9 @@ from .models import NutriTable
 
 def product_list(request):
     products = Product.objects.all()
-
-    for prod in products:
-        facts = NutriFact.objects.filter(product_id=prod.id)
-        table = NutriTable.objects.filter(product_id=prod.id)
+    facts = NutriFact.objects.all()
+    table = NutriTable.objects.all()
 
     return render(request, 'facts/product_list.html', {'products': products,
                                                        'facts': facts,
                                                        'table': table})
-
