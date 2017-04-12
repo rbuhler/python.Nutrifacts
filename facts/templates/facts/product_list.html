@@ -11,20 +11,40 @@
     <!-- Products [products] -->
     {% for product in products %}
     <div>
+        <hr>
         <p>Product: [ {{ product.name }} ]</p>
         <p>{{ product.manufacturer }}</p>
         <i>{{ product.barcode }}</i>
     </div>
-
     <!-- Nutri Facts [facts] -->
     <div>
-        {% for facts in product_set.all %}
-        <p> {{ facts.servingSize }}     </p>
-        <p> {{ facts.servingUM }}       </p>
-        <p> {{ facts.servingQuantity }} </p>
-        <p> {{ facts.servingQtdUm }}    </p>
-        <p> {{ facts.footNote|linebreaksbr }} </p>
-        {% endfor %}
+        <table>
+            <tr>
+                <th align="left"> Description </th>
+                <th align="left"> Value ( count {{product.facts_all.set.count}} ) </th>
+            </tr>
+
+
+            {% for fact in product.facts_set.all %}
+            <tr>
+                <td> Size </td>
+                <td> {{ fact.servingSize }} </td>
+            </tr><tr>
+                <td> UM </td>
+                <td> {{ fact.servingUM }} </td>
+            </tr><tr>
+                <td> Quantity </td>
+                <td> {{ fact.servingQuantity }} </td>
+            </tr><tr>
+                <td> UM </td>
+                <td> {{ fact.servingQtdUm }} </td>
+            </tr><tr>
+                <td> Foot note </td>
+                <td> {{ fact.footNote|linebreaksbr }} </td>
+            </tr>
+            {% endfor %}
+
+        </table>
     </div>
 
     <!-- Nutri Table [table] -->
