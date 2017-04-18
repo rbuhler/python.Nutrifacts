@@ -9,12 +9,12 @@
     </div>
 
     <!-- Products [products] -->
-    {% for product in products %}
+    {% for prod in products %}
     <div>
         <hr>
-        <p>Product: [ {{ product.name }} ]</p>
-        <p>{{ product.manufacturer }}</p>
-        <i>{{ product.barcode }}</i>
+        <p>Product: [ {{ prod.name }} ]</p>
+        <p>{{ prod.manufacturer }}</p>
+        <i>{{ prod.barcode }}</i>
     </div>
     <!-- Nutri Facts [facts] -->
     <div>
@@ -25,13 +25,13 @@
             </tr>
 
 
-            {% for fact in product.facts_set.all %}
+            {% for fact in prod.nutrifact_set.all %}
             <tr>
                 <td> Size </td>
                 <td> {{ fact.servingSize }} </td>
             </tr><tr>
                 <td> Product </td>
-                <td> {{ product.id }} </td>
+                <td> {{ prod.id }} </td>
             </tr><tr>
                 <td> UM </td>
                 <td> {{ fact.servingUM }} </td>
@@ -46,6 +46,14 @@
                 <td> {{ fact.footNote|linebreaksbr }} </td>
             </tr>
             {% endfor %}
+
+            {% for tab in prod.nutritable_set.all %}
+            <tr>
+                <td> Component </td>
+                <td> {{ tab.componentID }} </td>
+            </tr>
+            {% endfor %}
+
 
         </table>
     </div>

@@ -12,7 +12,7 @@ class Product(models.Model):
 
 
 class NutriFact(models.Model):
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     id = models.AutoField(primary_key=True)
 
     servingSize = models.FloatField()
@@ -23,8 +23,8 @@ class NutriFact(models.Model):
 
 
 class NutriTable(models.Model):
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    index = models.AutoField(primary_key=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)
 
     componentID = models.CharField(max_length=60)
     componentQuantity = models.FloatField()
