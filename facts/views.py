@@ -14,3 +14,14 @@ def product_list(request):
     return render(request, 'facts/product_list.html', {'products': products,
                                                        'facts': facts,
                                                        'table': table})
+
+
+def product_detail(request, barcode):
+    # bcode = 7896016601965
+    product = Product.objects.filter(barcode=barcode).values()
+    facts = NutriFact.objects.all()
+    table = NutriTable.objects.all()
+
+    return render(request, 'facts/product_detail.html', {'product': product,
+                                                         'facts': facts,
+                                                         'table': table})

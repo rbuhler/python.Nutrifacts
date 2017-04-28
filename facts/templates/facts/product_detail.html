@@ -1,0 +1,76 @@
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <title>NutriFacts</title>
+</head>
+<body>
+    <!-- Header -->
+    <div>
+        <h1><a href="">NutriFacts - Product Detail</a></h1>
+    </div>
+    <div>
+        <hr>
+        <p>{{product}}</p>
+        <p>{{facts}}</p>
+        <p>{{table}}</p>
+        <hr>
+        <p>Product: [ {{ product.name }} ]</p>
+        <p>{{ product.manufacturer }}</p>
+        <i>{{ product.barcode }}</i>
+    </div>  <!-- Products -->
+
+    <div>
+        <table>
+            <tr>
+                <th align="left"> Description </th>
+                <th align="left"> Value </th>
+            </tr>
+            {% for fact in product.nutrifact_set.all %}
+            <tr>
+                <td> Size </td>
+                <td> {{ fact.servingSize }} </td>
+            </tr><tr>
+                <td> Product </td>
+                <td> {{ product.id }} </td>
+            </tr><tr>
+                <td> UM </td>
+                <td> {{ fact.servingUM }} </td>
+            </tr><tr>
+                <td> Quantity </td>
+                <td> {{ fact.servingQuantity }} </td>
+            </tr><tr>
+                <td> UM </td>
+                <td> {{ fact.servingQtdUm }} </td>
+            </tr><tr>
+                <td> Foot note </td>
+                <td> {{ fact.footNote|linebreaksbr }} </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div> <!-- Nutri Fact -->
+
+    <div>
+        <table>
+            <tr>
+                <th> Component </th>
+                <th> Value </th>
+                <th align="center"> UM </th>
+                <th align="right">Daily Values</th>
+            </tr>
+            {% for tab in product.nutritable_set.all %}
+            <tr>
+                <td> {{ tab.componentID }} </td>
+                <td> {{ tab.componentQuantity }} </td>
+                <td align="center"> {{ tab.componentUM }} </td>
+                <td align="right"> {{ tab.dailyValues }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div> <!-- Nutri Table -->
+
+</body>
+</html>
+</html>
