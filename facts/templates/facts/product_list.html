@@ -1,5 +1,8 @@
 <html>
 <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
     <title>NutriFacts</title>
 </head>
 <body>
@@ -7,24 +10,20 @@
     <div>
         <h1><a href="">NutriFacts - Full list</a></h1>
     </div>
-
-    <!-- Products [products] -->
-    {% for prod in products %}
+       {% for prod in products %}
     <div>
         <hr>
         <p>Product: [ {{ prod.name }} ]</p>
         <p>{{ prod.manufacturer }}</p>
         <i>{{ prod.barcode }}</i>
-    </div>
-    <!-- Nutri Facts [facts] -->
+    </div>  <!-- Products -->
+
     <div>
         <table>
             <tr>
                 <th align="left"> Description </th>
-                <th align="left"> Value 1.0 </th>
+                <th align="left"> Value </th>
             </tr>
-
-
             {% for fact in prod.nutrifact_set.all %}
             <tr>
                 <td> Size </td>
@@ -47,21 +46,27 @@
             </tr>
             {% endfor %}
 
+        </table>
+    </div> <!-- Nutri Fact -->
+
+    <div>
+        <table>
+            <tr>
+                <th> Component </th>
+                <th> Value </th>
+                <th align="center"> UM </th>
+                <th align="right">Daily Values</th>
+            </tr>
             {% for tab in prod.nutritable_set.all %}
             <tr>
-                <td> Component </td>
                 <td> {{ tab.componentID }} </td>
+                <td> {{ tab.componentQuantity }} </td>
+                <td align="center"> {{ tab.componentUM }} </td>
+                <td align="right"> {{ tab.dailyValues }} </td>
             </tr>
             {% endfor %}
-
-
         </table>
-    </div>
-
-    <!-- Nutri Table [table] -->
-    <div>
-
-    </div>
+    </div> <!-- Nutri Table -->
     {% endfor %}
 
 </body>
