@@ -6,70 +6,74 @@
     <title>NutriFacts</title>
 </head>
 <body>
-    <!-- Header -->
-    <div>
-        <h1><a href="">NutriFacts - Product Detail</a></h1>
-    </div>
-    <div>
-        <hr>
-        <p>{{product}}</p>
-        <p>{{facts}}</p>
-        <p>{{table}}</p>
-        <hr>
-        <p>Product: [ {{ product.name }} ]</p>
-        <p>{{ product.manufacturer }}</p>
-        <i>{{ product.barcode }}</i>
-    </div>  <!-- Products -->
+<!-- Header -->
+<div>
+    <h1><a href="">NutriFacts - Details</a></h1>
+</div>
 
-    <div>
-        <table>
-            <tr>
-                <th align="left"> Description </th>
-                <th align="left"> Value </th>
-            </tr>
-            {% for fact in product.nutrifact_set.all %}
-            <tr>
-                <td> Size </td>
-                <td> {{ fact.servingSize }} </td>
-            </tr><tr>
-                <td> Product </td>
-                <td> {{ product.id }} </td>
-            </tr><tr>
-                <td> UM </td>
-                <td> {{ fact.servingUM }} </td>
-            </tr><tr>
-                <td> Quantity </td>
-                <td> {{ fact.servingQuantity }} </td>
-            </tr><tr>
-                <td> UM </td>
-                <td> {{ fact.servingQtdUm }} </td>
-            </tr><tr>
-                <td> Foot note </td>
-                <td> {{ fact.footNote|linebreaksbr }} </td>
-            </tr>
-            {% endfor %}
+<div>
+    <a href="/">[ Home ]</a>
+    <a href="/product">[ Full list ]</a>
+</div>
 
-        </table>
-    </div> <!-- Nutri Fact -->
+    {% for prod in products %}
+<div>
+    <hr>
+    <p>Product: [ {{ prod.name }} ]</p>
+    <p>{{ prod.manufacturer }}</p>
+    <i>{{ prod.barcode }}</i>
+</div>  <!-- Products -->
 
-    <div>
-        <table>
-            <tr>
-                <th> Component </th>
-                <th> Value </th>
-                <th align="center"> UM </th>
-                <th align="right">Daily Values</th>
-            </tr>
-            {% for tab in product.nutritable_set.all %}
-            <tr>
-                <td> {{ tab.componentID }} </td>
-                <td> {{ tab.componentQuantity }} </td>
-                <td align="center"> {{ tab.componentUM }} </td>
-                <td align="right"> {{ tab.dailyValues }} </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div> <!-- Nutri Table -->
+<div>
+    <table>
+        <tr>
+            <th align="left"> Description </th>
+            <th align="left"> Value </th>
+        </tr>
+        {% for fact in prod.nutrifact_set.all %}
+        <tr>
+            <td> Size </td>
+            <td> {{ fact.servingSize }} </td>
+        </tr><tr>
+        <td> Product </td>
+        <td> {{ prod.id }} </td>
+    </tr><tr>
+        <td> UM </td>
+        <td> {{ fact.servingUM }} </td>
+    </tr><tr>
+        <td> Quantity </td>
+        <td> {{ fact.servingQuantity }} </td>
+    </tr><tr>
+        <td> UM </td>
+        <td> {{ fact.servingQtdUm }} </td>
+    </tr><tr>
+        <td> Foot note </td>
+        <td> {{ fact.footNote|linebreaksbr }} </td>
+    </tr>
+        {% endfor %}
+
+    </table>
+</div> <!-- Nutri Fact -->
+
+<div>
+    <table>
+        <tr>
+            <th> Component </th>
+            <th> Value </th>
+            <th align="center"> UM </th>
+            <th align="right">Daily Values</th>
+        </tr>
+        {% for tab in prod.nutritable_set.all %}
+        <tr>
+            <td> {{ tab.componentID }} </td>
+            <td> {{ tab.componentQuantity }} </td>
+            <td align="center"> {{ tab.componentUM }} </td>
+            <td align="right"> {{ tab.dailyValues }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div> <!-- Nutri Table -->
+{% endfor %}
 
 </body>
 </html>

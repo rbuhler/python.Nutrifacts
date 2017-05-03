@@ -6,6 +6,11 @@ from .models import NutriTable
 # Create your views here.
 
 
+def index(request):
+
+    return render(request, 'facts/index.html')
+
+
 def product_list(request):
     products = Product.objects.all()
     facts = NutriFact.objects.all()
@@ -17,11 +22,10 @@ def product_list(request):
 
 
 def product_detail(request, barcode):
-    # bcode = 7896016601965
-    product = Product.objects.filter(barcode=barcode).values()
+    products = Product.objects.filter(barcode=barcode).values()
     facts = NutriFact.objects.all()
     table = NutriTable.objects.all()
 
-    return render(request, 'facts/product_detail.html', {'product': product,
+    return render(request, 'facts/product_detail.html', {'products': products,
                                                          'facts': facts,
                                                          'table': table})

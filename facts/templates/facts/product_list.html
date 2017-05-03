@@ -10,12 +10,18 @@
     <div>
         <h1><a href="">NutriFacts - Full list</a></h1>
     </div>
+    <div>
+        <a href="/">[ Home ]</a>
+        <a href="/product">[ Full list ]</a>
+    </div>
        {% for prod in products %}
     <div>
         <hr>
         <p>Product: [ {{ prod.name }} ]</p>
         <p>{{ prod.manufacturer }}</p>
-        <i>{{ prod.barcode }}</i>
+        <p>
+            <a href="product/{{ prod.barcode }}">{{ prod.barcode }}</a>
+        </p>
     </div>  <!-- Products -->
 
     <div>
