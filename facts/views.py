@@ -14,7 +14,7 @@ def index(request):
 def product_list(request):
     products = Product.objects.all()
     facts = NutriFact.objects.all()
-    table = NutriTable.objects.all()
+    table = NutriTable.objects.all().order_by('componentID')
 
     return render(request, 'facts/product_list.html', {'products': products,
                                                        'facts': facts,
@@ -26,7 +26,7 @@ def product_detail(request, barcode):
     if len(products) > 0:
         for prod in products:
             facts = NutriFact.objects.filter(product=prod.id)
-            table = NutriTable.objects.filter(product=prod.id)
+            table = NutriTable.objects.filter(product=prod.id).order_by('componentID')
 
     return render(request, 'facts/product_detail.html', {'products': products,
                                                          'facts': facts,
