@@ -18,3 +18,6 @@ $ python manage.py shell < facts\tests\deleteDB.py
 - ... ./facts/views.py -> new method;
 - ... ./facts/templates/facts/ -> new HTML;
 - ... ./facts/urls -> define the URL parameters; 
+
+## Data Type
+* 'QuerySet' object :

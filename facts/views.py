@@ -22,9 +22,11 @@ def product_list(request):
 
 
 def product_detail(request, barcode):
-    products = Product.objects.filter(barcode=barcode).values()
-    facts = NutriFact.objects.all()
-    table = NutriTable.objects.all()
+    products = Product.objects.filter(barcode=barcode)
+    if len(products) > 0:
+        for prod in products:
+            facts = NutriFact.objects.filter(product=prod.id)
+            table = NutriTable.objects.filter(product=prod.id)
 
     return render(request, 'facts/product_detail.html', {'products': products,
                                                          'facts': facts,

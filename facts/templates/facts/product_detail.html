@@ -30,13 +30,13 @@
             <th align="left"> Description </th>
             <th align="left"> Value </th>
         </tr>
-        {% for fact in prod.nutrifact_set.all %}
+        {% for fact in facts %}
         <tr>
             <td> Size </td>
             <td> {{ fact.servingSize }} </td>
         </tr><tr>
         <td> Product </td>
-        <td> {{ prod.id }} </td>
+        <td> &nbsp; </td>
     </tr><tr>
         <td> UM </td>
         <td> {{ fact.servingUM }} </td>
@@ -63,7 +63,7 @@
             <th align="center"> UM </th>
             <th align="right">Daily Values</th>
         </tr>
-        {% for tab in prod.nutritable_set.all %}
+        {% for tab in table %}
         <tr>
             <td> {{ tab.componentID }} </td>
             <td> {{ tab.componentQuantity }} </td>
