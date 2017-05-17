@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from facts import DataAccess
 from .models import Product
 from .models import NutriFact
 from .models import NutriTable
@@ -12,9 +14,16 @@ def index(request):
 
 
 def product_list(request):
-    products = Product.objects.all()
-    facts = NutriFact.objects.all()
-    table = NutriTable.objects.all().order_by('componentID')
+    all = DataAccess()
+
+    all.all_products()
+
+    products = all.products
+    facts = all.facts
+    table = all.table.order_by('componentID')
+    # products = Product.objects.all()
+    # facts = NutriFact.objects.all()
+    # table = NutriTable.objects.all().order_by('componentID')
 
     return render(request, 'facts/product_list.html', {'products': products,
                                                        'facts': facts,
