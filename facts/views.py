@@ -30,8 +30,8 @@ def product_detail(request, barcode):
     products = Product.objects.filter(barcode=barcode)
     if len(products) > 0:
         for prod in products:
-            facts = NutriFact.objects.filter(product=prod.id)
-            table = NutriTable.objects.filter(product=prod.id).order_by('componentID')
+            facts = NutriFact.objects.filter(product=prod.key)
+            table = NutriTable.objects.filter(product=prod.key).order_by('componentID')
 
     return render(request, 'facts/product_detail.html', {'products': products,
                                                          'facts': facts,

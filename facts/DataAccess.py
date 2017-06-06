@@ -20,8 +20,8 @@ class DataAccess(object):
         self.set_products(Product.objects.filter(barcode=barcode))
         if len(self.products) > 0:
             for prod in self.products:
-                facts_local.append(NutriFact.objects.filter(product=prod.id))
-                table_local.append(NutriTable.objects.filter(product=prod.id))
+                facts_local.append(NutriFact.objects.filter(product=prod.key))
+                table_local.append(NutriTable.objects.filter(product=prod.key))
             self.set_facts(facts_local)
             self.set_table(table_local)
         return None
